@@ -23,11 +23,11 @@ def Gpio_Intent(status,room):
     GPIO.setmode(GPIO.BCM)    
     GPIO.setup(17,GPIO.OUT)
     if status in STATUSON:
-	GPIO.output(17,GPIO.HIGH)
-	return statement('turning {} lights'.format(status))
+        GPIO.output(17,GPIO.HIGH)
+        return statement('turning {} L E D'.format(status))
     elif status in STATUSOFF:
         GPIO.output(17,GPIO.LOW)
-        return statement('turning {} lights'.format(status))
+        return statement('turning {} L E D'.format(status))
     else:
         return statement('Sorry not possible.')
  

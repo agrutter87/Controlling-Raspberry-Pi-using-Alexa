@@ -28,9 +28,13 @@
                         }
                     ],
                     "samples": [
-                        "turn light {status}",
-                        "turn {status} light"
+                        "turn L E D {status}",
+                        "turn {status} L E D"
                     ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
                 }
             ],
             "types": [
