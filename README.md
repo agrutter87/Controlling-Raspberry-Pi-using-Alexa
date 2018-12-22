@@ -5,7 +5,7 @@ My notes:
 I really enjoyed the example project provided by nishit-patel. Check out his github and hackster.io projects!
 I decided to fork this because I want to control some other stuff with it, and I like to track changes. 
 
-I received my first Alexa Echo Dot as a dirty santa gift. Stole it from the owner! haha! It's cool he had a few already, so they were excited for me to have a new toy.
+I received my first Alexa Echo Dot as a dirty santa gift at work. Stole it from the owner! haha! It's cool he had a few already, so they were excited for me to have a new toy.
 I was so impressed with the Dot's ability to hear and comprehend my voice across the 1-br apartment that I decided I wanted to be able to call it closer in the morning while I'm in the shower.
 I've made a few small rovers now, and I think it would be pretty cool to use this demo as a starting point for a smart rover which would do some RPi camera/OpenCV based navigation to find its way to the bathroom with the Dot attached.
 
