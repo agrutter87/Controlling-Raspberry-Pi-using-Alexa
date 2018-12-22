@@ -11,6 +11,7 @@ logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 STATUSON = ['on','high']
 STATUSOFF = ['off','low']
+STATUSTOGGLE = ['toggle','flash','strobe']
 
 @ask.launch
 def launch():
@@ -21,19 +22,21 @@ def launch():
 def Gpio_Intent(status,room):
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)    
-    GPIO.setup(17,GPIO.OUT)
+    GPIO.setup(18,GPIO.OUT)
     if status in STATUSON:
-        GPIO.output(17,GPIO.HIGH)
-        return statement('turning {} L E D'.format(status))
+        GPIO.output(18, GPIO.HIGH)
+        return statement('turning {} blue L E D'.format(status))
     elif status in STATUSOFF:
-        GPIO.output(17,GPIO.LOW)
-        return statement('turning {} L E D'.format(status))
+        GPIO.output(18, GPIO.LOW)
+        return statement('turning {} blue L E D'.format(status))
+    elif status in STATUSTOGGLE:
+        return statement('{} command not yet supported'.format(status))
     else:
         return statement('Sorry not possible.')
  
 @ask.intent('AMAZON.HelpIntent')
 def help():
-    speech_text = 'You can say hello to me!'
+    speech_text = 'You can say, "Turn L E D on", or, "Turn L E D off".'
     return question(speech_text).reprompt(speech_text).simple_card('HelloWorld', speech_text)
 
 
