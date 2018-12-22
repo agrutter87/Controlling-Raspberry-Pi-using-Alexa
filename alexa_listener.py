@@ -3,7 +3,7 @@ import os
 
 from flask import Flask
 from flask_ask import Ask, request, session, question, statement
-import RPi.GPIO as GPIO
+import wiringpi
 
 app = Flask(__name__)
 ask = Ask(app, "/")
@@ -20,14 +20,14 @@ def launch():
 
 @ask.intent('GpioIntent', mapping = {'status':'status'})
 def Gpio_Intent(status,room):
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)    
-    GPIO.setup(18,GPIO.OUT)
+    wiringpi.wiringPiSetupGpio ()
+    
+    wiringpi.pinMode(18, 1)
     if status in STATUSON:
-        GPIO.output(18, GPIO.HIGH)
+        wiringpi.digitalWrite(18, 1)
         return statement('turning {} blue L E D'.format(status))
     elif status in STATUSOFF:
-        GPIO.output(18, GPIO.LOW)
+        wiringpi.digitalWrite(18, 0)
         return statement('turning {} blue L E D'.format(status))
     elif status in STATUSTOGGLE:
         return statement('{} command not yet supported'.format(status))
