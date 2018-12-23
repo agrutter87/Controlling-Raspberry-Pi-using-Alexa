@@ -22,15 +22,21 @@ def launch():
 def Gpio_Intent(status,room):
     wiringpi.wiringPiSetupGpio ()
     
-    wiringpi.pinMode(18, 1)
+    wiringpi.pinMode(18, 2) # pwm mode = 2
+    wiringpi.pwmSetMode(0)
+    
+    # pwmFrequency in Hz = 19.2e6 Hz / pwmClock / pwmRange.
+    wiringpi.pwmSetRange(4096)
+    wiringpi.pwmSetClock(4095)
     if status in STATUSON:
-        wiringpi.digitalWrite(18, 1)
+        wiringpi.pwmWrite(18, 4096)
         return statement('turning {} blue L E D'.format(status))
     elif status in STATUSOFF:
-        wiringpi.digitalWrite(18, 0)
+        wiringpi.pwmWrite(18, 0)
         return statement('turning {} blue L E D'.format(status))
     elif status in STATUSTOGGLE:
-        return statement('{} command not yet supported'.format(status))
+        wiringpi.pwmWrite(18, 2048)
+        return statement('{}ing blue L E D'.format(status))
     else:
         return statement('Sorry not possible.')
  
