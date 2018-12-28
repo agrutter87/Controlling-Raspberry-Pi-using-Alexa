@@ -28,8 +28,11 @@
                         }
                     ],
                     "samples": [
+                        "send {status}",
                         "turn L E D {status}",
-                        "turn {status} L E D"
+                        "turn {status} L E D",
+                        "L E D {status}",
+                        "{status} L E D"
                     ]
                 },
                 {
@@ -41,6 +44,15 @@
                 {
                     "name": "STATUS",
                     "values": [
+                        {
+                            "name": {
+                                "value": "a",
+                                "synonyms": [
+                                    "see",
+                                    "be"
+                                ]
+                            }
+                        },
                         {
                             "name": {
                                 "value": "off",
@@ -56,6 +68,15 @@
                                 "synonyms": [
                                     "High",
                                     "On"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "toggle",
+                                "synonyms": [
+                                    "flash",
+                                    "strobe"
                                 ]
                             }
                         }
